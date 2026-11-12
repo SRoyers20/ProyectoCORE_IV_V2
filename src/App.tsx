@@ -256,7 +256,6 @@ export default function App() {
           <ConsequenceCard
             dilemma={currentDilemma}
             selectedOption={activeSelectedOption}
-            visibleStats={visibleStats}
             onProceedToReflection={handleProceedToReflection}
           />
         )}

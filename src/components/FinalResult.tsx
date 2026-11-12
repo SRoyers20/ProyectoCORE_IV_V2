@@ -12,10 +12,14 @@ import {
   RotateCcw, 
   Scale, 
   Sparkles, 
-  HelpCircle,
-  MessageSquareQuote,
-  Compass
+  HelpCircle, 
+  MessageSquareQuote, 
+  Compass,
+  Volume2,
+  VolumeX,
+  Music
 } from 'lucide-react';
+import { stairwayAudio } from '../utils/stairwayAudio';
 
 interface FinalResultProps {
   profile: FinalProfile;
@@ -35,6 +39,32 @@ export const FinalResult: React.FC<FinalResultProps> = ({
   onRestart
 }) => {
   const [copied, setCopied] = useState(false);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+
+  // Auto-play the iconic Stairway to Heaven arpeggio when reaching the top step
+  React.useEffect(() => {
+    try {
+      stairwayAudio.play();
+      setIsAudioPlaying(true);
+    } catch {
+      // browser may require user gesture
+      setIsAudioPlaying(false);
+    }
+
+    return () => {
+      stairwayAudio.stop();
+    };
+  }, []);
+
+  const toggleMusic = () => {
+    if (isAudioPlaying) {
+      stairwayAudio.stop();
+      setIsAudioPlaying(false);
+    } else {
+      stairwayAudio.play();
+      setIsAudioPlaying(true);
+    }
+  };
 
   const generateReportText = (): string => {
     return `=======================================================
@@ -143,7 +173,7 @@ ${record.studentReflection ? `Reflexión del estudiante: "${record.studentReflec
   return (
     <div className="w-full max-w-4xl mx-auto space-y-8 py-4 sm:py-8 text-left">
       {/* Top Banner */}
-      <div className="text-center space-y-2 border-b border-[var(--color-border)] pb-6">
+      <div className="text-center space-y-3 border-b border-[var(--color-border)] pb-6">
         <div className="inline-flex items-center gap-1.5 text-xs uppercase font-bold tracking-widest text-[var(--color-accent)]">
           <Award className="w-4 h-4" />
           <span>Diagnóstico de realización personal · Core IV</span>
@@ -154,6 +184,40 @@ ${record.studentReflection ? `Reflexión del estudiante: "${record.studentReflec
         <p className="text-lg sm:text-xl font-serif italic text-[var(--color-text-secondary)] max-w-2xl mx-auto">
           «{profile.tagline}»
         </p>
+
+        {/* Stairway to Heaven Audio Banner Player */}
+        <div className="pt-2 flex justify-center">
+          <button
+            onClick={toggleMusic}
+            type="button"
+            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-xl text-xs font-medium border transition-all cursor-pointer shadow-xs focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
+            style={{
+              backgroundColor: isAudioPlaying ? 'var(--color-accent-subtle)' : 'var(--color-surface)',
+              borderColor: isAudioPlaying ? 'var(--color-accent)' : 'var(--color-border)',
+              color: 'var(--color-text-primary)'
+            }}
+            title={isAudioPlaying ? 'Pausar audio de fondo' : 'Reproducir audio de fondo'}
+          >
+            <div className={`p-1 rounded-full ${isAudioPlaying ? 'bg-[var(--color-accent)] text-white animate-pulse' : 'bg-[var(--color-surface-subtle)] text-[var(--color-text-muted)]'}`}>
+              <Music className="w-3.5 h-3.5" />
+            </div>
+            <div className="text-left">
+              <span className="font-semibold block leading-tight">
+                Stairway to Heaven · Led Zeppelin
+              </span>
+              <span className="text-[10px] text-[var(--color-text-muted)]">
+                {isAudioPlaying ? 'Sonando de fondo (Intro de guitarra acústica)' : 'Pausado · Toca para reproducir'}
+              </span>
+            </div>
+            <div className="ml-1 pl-2 border-l border-[var(--color-border)]">
+              {isAudioPlaying ? (
+                <Volume2 className="w-4 h-4 text-[var(--color-accent)]" />
+              ) : (
+                <VolumeX className="w-4 h-4 text-[var(--color-text-muted)]" />
+              )}
+            </div>
+          </button>
+        </div>
       </div>
 
       {/* Main Diagnostic Card */}
