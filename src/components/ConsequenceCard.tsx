@@ -1,115 +1,107 @@
 import React from 'react';
-import { Dilemma, DilemmaOption, Indicators } from '../types';
-import { ArrowRight, Compass, ShieldAlert, Sparkles, Scale, Users, ShieldCheck } from 'lucide-react';
+import { Dilemma, DilemmaOption, CoreVisibleStats } from '../types';
+import { ArrowRight, BookOpen, Bookmark, HelpCircle } from 'lucide-react';
 import { ValueStats } from './ValueStats';
 
 interface ConsequenceCardProps {
   dilemma: Dilemma;
   selectedOption: DilemmaOption;
-  indicators: Indicators;
+  visibleStats: CoreVisibleStats;
   onProceedToReflection: () => void;
 }
 
 export const ConsequenceCard: React.FC<ConsequenceCardProps> = ({
   dilemma,
   selectedOption,
-  indicators,
+  visibleStats,
   onProceedToReflection
 }) => {
-  const effectEntries = Object.entries(selectedOption.effects) as [keyof Indicators, number][];
-
   return (
     <div className="w-full max-w-4xl mx-auto space-y-6 py-4 sm:py-6 text-left">
       {/* Step Indicator Header */}
-      <div className="flex items-center justify-between border-b border-stone-200 pb-3">
-        <span className="text-xs uppercase font-bold tracking-widest text-amber-800">
-          Peldaño {dilemma.step} de 10 · Consecuencias de tu elección
+      <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-3">
+        <span className="text-xs uppercase font-bold tracking-widest text-[var(--color-accent)]">
+          Peldaño {dilemma.step} de 10 · Retroalimentación formativa
         </span>
-        <span className="text-xs text-stone-500">
+        <span className="text-xs text-[var(--color-text-muted)]">
           Tema: {dilemma.theme}
         </span>
       </div>
 
-      {/* Main Consequence Display */}
-      <div className="bg-white/95 border border-stone-200 rounded-2xl p-6 sm:p-8 shadow-xs space-y-6">
-        {/* User Choice Reminder */}
-        <div className="p-4 bg-stone-50/80 border border-stone-200/80 rounded-xl space-y-1">
-          <div className="text-[11px] uppercase tracking-wider font-semibold text-stone-500">
-            Tu postura elegida
+      {/* Main Consequence Display with the 5 Required Blocks */}
+      <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 sm:p-8 shadow-xs space-y-6 transition-colors">
+        
+        {/* BLOQUE 1: Tu decisión */}
+        <div className="p-4 bg-[var(--color-surface-subtle)] border border-[var(--color-border)] rounded-xl space-y-1">
+          <div className="text-[11px] uppercase tracking-wider font-semibold text-[var(--color-text-muted)]">
+            1. Tu decisión tomada:
           </div>
-          <div className="font-serif font-bold text-stone-900 text-base">
-            {selectedOption.label}
+          <div className="font-serif font-bold text-[var(--color-text-primary)] text-base">
+            «{selectedOption.label}»
           </div>
-          <div className="text-xs text-stone-600">
+          <p className="text-xs text-[var(--color-text-secondary)]">
             {selectedOption.text}
-          </div>
+          </p>
         </div>
 
-        {/* Narrative Outcome */}
-        <div className="space-y-2">
-          <div className="text-xs uppercase tracking-wider font-semibold text-amber-800">
-            Consecuencia narrativa
+        {/* BLOQUE 2: Consecuencia narrativa */}
+        <div className="space-y-1.5">
+          <div className="text-xs uppercase tracking-wider font-semibold text-[var(--color-accent)]">
+            2. Consecuencia narrativa:
           </div>
-          <div className="p-4 bg-amber-50/50 border border-amber-200/80 rounded-xl text-stone-900 text-sm sm:text-base font-serif italic leading-relaxed">
+          <div className="p-4 bg-[var(--color-accent-subtle)] border border-[var(--color-accent-border)] rounded-xl text-[var(--color-text-primary)] text-sm sm:text-base font-serif italic leading-relaxed">
             «{selectedOption.consequence}»
           </div>
         </div>
 
-        {/* Neutral Ethical Explanation */}
-        <div className="space-y-2">
-          <div className="text-xs uppercase tracking-wider font-semibold text-stone-500">
-            Discernimiento ético neutral
+        {/* BLOQUE 3: Conexión con el libro */}
+        <div className="space-y-1.5">
+          <div className="text-xs uppercase tracking-wider font-semibold text-[var(--color-text-muted)] flex items-center gap-1.5">
+            <BookOpen className="w-3.5 h-3.5 text-[var(--color-accent)]" />
+            <span>3. Conexión con la obra literaria ({dilemma.bookConnection.replace('Inspirado en el conflicto de ', '').replace('Inspirado en el conflicto interior de ', '')}):</span>
           </div>
-          <div className="p-4 bg-white border border-stone-200 rounded-xl text-stone-700 text-xs sm:text-sm leading-relaxed">
-            {selectedOption.explanation}
-          </div>
-        </div>
-
-        {/* Indicator impact list */}
-        <div className="space-y-3 pt-2 border-t border-stone-100">
-          <div className="text-xs uppercase tracking-wider font-semibold text-stone-500">
-            Impacto en tus indicadores:
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
-            {effectEntries.map(([key, delta]) => {
-              const isPositive = delta > 0;
-              const isZero = delta === 0;
-
-              return (
-                <div
-                  key={key}
-                  className={`p-2.5 rounded-xl border flex flex-col justify-between ${
-                    isZero
-                      ? 'bg-stone-50 border-stone-200 text-stone-600'
-                      : isPositive
-                      ? 'bg-emerald-50/70 border-emerald-200 text-emerald-900'
-                      : 'bg-red-50/70 border-red-200 text-red-900'
-                  }`}
-                >
-                  <span className="text-[11px] font-semibold capitalize">
-                    {key}
-                  </span>
-                  <span className="text-base font-bold tabular-nums">
-                    {isPositive ? `+${delta}` : delta}
-                  </span>
-                </div>
-              );
-            })}
+          <div className="p-4 bg-[var(--color-surface-subtle)] border border-[var(--color-border)] rounded-xl text-[var(--color-text-secondary)] text-xs sm:text-sm leading-relaxed font-serif">
+            {selectedOption.bookConnectionDetail}
           </div>
         </div>
 
-        {/* Mini stats view */}
-        <div className="pt-2">
-          <ValueStats indicators={indicators} recentEffects={selectedOption.effects} compact />
+        {/* BLOQUE 4: Conexión con Core IV */}
+        <div className="space-y-1.5">
+          <div className="text-xs uppercase tracking-wider font-semibold text-[var(--color-text-muted)] flex items-center gap-1.5">
+            <Bookmark className="w-3.5 h-3.5 text-[var(--color-accent)]" />
+            <span>4. Conexión con los temas de Core IV:</span>
+          </div>
+          <div className="p-4 bg-[var(--color-surface-subtle)] border border-[var(--color-border)] rounded-xl text-[var(--color-text-secondary)] text-xs sm:text-sm leading-relaxed">
+            {selectedOption.coreIVConnectionDetail}
+          </div>
+        </div>
+
+        {/* BLOQUE 5: Pregunta de reflexión */}
+        <div className="p-4 bg-[var(--color-accent-subtle)] border border-[var(--color-accent-border)] rounded-xl space-y-1">
+          <div className="text-xs font-semibold uppercase tracking-wider text-[var(--color-accent)] flex items-center gap-1.5">
+            <HelpCircle className="w-3.5 h-3.5" />
+            <span>5. Pregunta de reflexión:</span>
+          </div>
+          <p className="text-sm sm:text-base font-serif italic text-[var(--color-text-primary)]">
+            «{selectedOption.reflection}»
+          </p>
+        </div>
+
+        {/* Actualización de los 4 indicadores visibles */}
+        <div className="space-y-2 pt-2 border-t border-[var(--color-border-subtle)]">
+          <div className="text-xs uppercase tracking-wider font-semibold text-[var(--color-text-muted)]">
+            Evolución de tus cuatro indicadores:
+          </div>
+          <ValueStats stats={visibleStats} compact />
         </div>
 
         {/* Proceed to Reflection */}
-        <div className="pt-4 border-t border-stone-100 flex items-center justify-end">
+        <div className="pt-4 border-t border-[var(--color-border-subtle)] flex items-center justify-end">
           <button
             onClick={onProceedToReflection}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-stone-900 text-stone-50 text-sm font-semibold rounded-xl hover:bg-stone-800 transition-colors shadow-xs cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-primary-btn)] text-[var(--color-primary-btn-text)] text-sm font-semibold rounded-xl hover:opacity-90 transition-opacity shadow-xs cursor-pointer"
           >
-            <span>Ir a la pausa de reflexión</span>
+            <span>Continuar a la pausa reflexiva</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

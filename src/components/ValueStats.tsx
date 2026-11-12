@@ -1,93 +1,82 @@
 import React from 'react';
-import { Indicators, IndicatorEffects } from '../types';
-import { Compass, ShieldCheck, Sparkles, Scale, Users } from 'lucide-react';
+import { CoreVisibleStats } from '../types';
+import { Compass, Repeat, ShieldCheck, Sparkles } from 'lucide-react';
 
 interface ValueStatsProps {
-  indicators: Indicators;
-  recentEffects?: IndicatorEffects | null;
+  stats: CoreVisibleStats;
   compact?: boolean;
 }
 
-interface StatConfig {
-  key: keyof Indicators;
+interface StatItem {
+  key: keyof CoreVisibleStats;
   label: string;
   icon: React.ComponentType<{ className?: string }>;
   description: string;
-  colorClass: string;
+  colorVar: string;
 }
 
-const STATS_CONFIG: StatConfig[] = [
+const VISIBLE_STATS_CONFIG: StatItem[] = [
   {
-    key: 'libertad',
-    label: 'Libertad',
+    key: 'libertadResponsable',
+    label: 'Libertad responsable',
     icon: Compass,
-    description: 'Autonomía de la voluntad y resistencia a la imposición',
-    colorClass: 'bg-amber-600'
+    description: 'Capacidad de decidir con autonomía y asumir consecuencias.',
+    colorVar: 'var(--color-stat-libertad)'
   },
   {
-    key: 'integridad',
-    label: 'Integridad',
+    key: 'consistencia',
+    label: 'Consistencia',
+    icon: Repeat,
+    description: 'Patrón que están construyendo tus decisiones repetidas.',
+    colorVar: 'var(--color-stat-integridad)'
+  },
+  {
+    key: 'coherenciaPersonal',
+    label: 'Coherencia personal',
     icon: ShieldCheck,
-    description: 'Coherencia práctica entre principios éticos y acción',
-    colorClass: 'bg-emerald-700'
+    description: 'Alineación entre tus principios y tus acciones.',
+    colorVar: 'var(--color-stat-conciencia)'
   },
   {
-    key: 'conciencia',
-    label: 'Conciencia',
+    key: 'realizacion',
+    label: 'Realización',
     icon: Sparkles,
-    description: 'Claridad interior sin autoengaños ni racionalizaciones',
-    colorClass: 'bg-indigo-700'
-  },
-  {
-    key: 'responsabilidad',
-    label: 'Responsabilidad',
-    icon: Scale,
-    description: 'Capacidad de asumir las consecuencias y reparar el daño',
-    colorClass: 'bg-stone-700'
-  },
-  {
-    key: 'relaciones',
-    label: 'Relaciones',
-    icon: Users,
-    description: 'Cuidado de los otros, solidaridad y confianza comunitaria',
-    colorClass: 'bg-teal-700'
+    description: 'Equilibrio entre tu bienestar, tus relaciones y tu contribución al bien común.',
+    colorVar: 'var(--color-accent)'
   }
 ];
 
-export const ValueStats: React.FC<ValueStatsProps> = ({ indicators, recentEffects, compact = false }) => {
+export const ValueStats: React.FC<ValueStatsProps> = ({ stats, compact = false }) => {
   if (compact) {
     return (
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 w-full">
-        {STATS_CONFIG.map(({ key, label, icon: Icon, colorClass }) => {
-          const value = indicators[key];
-          const delta = recentEffects ? recentEffects[key] : undefined;
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full">
+        {VISIBLE_STATS_CONFIG.map(({ key, label, icon: Icon, colorVar }) => {
+          const value = stats[key];
 
           return (
             <div 
               key={key} 
-              className="bg-white/80 border border-stone-200/90 rounded-xl p-2.5 flex flex-col justify-between shadow-2xs"
+              className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl p-2.5 flex flex-col justify-between shadow-2xs transition-colors"
             >
-              <div className="flex items-center justify-between text-xs text-stone-600 mb-1">
+              <div className="flex items-center justify-between text-xs text-[var(--color-text-secondary)] mb-1">
                 <span className="flex items-center gap-1.5 font-medium truncate">
-                  <Icon className="w-3.5 h-3.5 text-stone-500 shrink-0" />
+                  <Icon className="w-3.5 h-3.5 text-[var(--color-text-muted)] shrink-0" />
                   {label}
                 </span>
-                {delta !== undefined && delta !== 0 && (
-                  <span className={`text-[10px] font-semibold tabular-nums ${delta > 0 ? 'text-emerald-700' : 'text-red-700'}`}>
-                    {delta > 0 ? `+${delta}` : delta}
-                  </span>
-                )}
               </div>
               <div className="flex items-baseline justify-between mb-1">
-                <span className="text-base font-semibold text-stone-900 tabular-nums">
+                <span className="text-base font-semibold text-[var(--color-text-primary)] tabular-nums">
                   {value}
                 </span>
-                <span className="text-[10px] text-stone-600 tabular-nums">/ 100</span>
+                <span className="text-[10px] text-[var(--color-text-muted)] tabular-nums">/ 100</span>
               </div>
-              <div className="w-full bg-stone-100 rounded-full h-1.5 overflow-hidden">
+              <div className="w-full bg-[var(--color-surface-subtle)] rounded-full h-1.5 overflow-hidden">
                 <div 
-                  className={`h-full ${colorClass} transition-all duration-500`}
-                  style={{ width: `${Math.min(Math.max(value, 0), 100)}%` }}
+                  className="h-full transition-all duration-500 rounded-full"
+                  style={{ 
+                    width: `${Math.min(Math.max(value, 0), 100)}%`,
+                    backgroundColor: colorVar
+                  }}
                   role="progressbar"
                   aria-valuenow={value}
                   aria-valuemin={0}
@@ -103,63 +92,56 @@ export const ValueStats: React.FC<ValueStatsProps> = ({ indicators, recentEffect
   }
 
   return (
-    <div className="bg-white/90 border border-stone-200 rounded-2xl p-5 shadow-xs">
-      <div className="flex items-center justify-between mb-4 pb-3 border-b border-stone-100">
+    <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-5 shadow-xs transition-colors">
+      <div className="flex items-center justify-between mb-4 pb-3 border-b border-[var(--color-border-subtle)]">
         <div>
-          <h4 className="text-xs uppercase tracking-wider text-stone-500 font-semibold">
-            Indicadores Personales · Core IV
+          <h4 className="text-xs uppercase tracking-wider text-[var(--color-accent)] font-semibold">
+            Cuatro Temas Centrales · Core IV
           </h4>
-          <p className="text-sm font-serif text-stone-800">
-            Brújula ética en evolución (Base: 50 / 100)
+          <p className="text-sm font-serif text-[var(--color-text-primary)]">
+            Evolución de tu camino ético (Punto de partida: 50 / 100)
           </p>
         </div>
-        <span className="text-xs text-stone-600 italic hidden sm:inline">
-          Evoluciona con cada elección
+        <span className="text-xs text-[var(--color-text-muted)] italic hidden sm:inline">
+          No es una calificación moral: muestra una tendencia
         </span>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-5 gap-3">
-        {STATS_CONFIG.map(({ key, label, icon: Icon, description, colorClass }) => {
-          const value = indicators[key];
-          const delta = recentEffects ? recentEffects[key] : undefined;
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
+        {VISIBLE_STATS_CONFIG.map(({ key, label, icon: Icon, description, colorVar }) => {
+          const value = stats[key];
 
           return (
             <div 
               key={key} 
-              className="p-3 bg-stone-50/70 rounded-xl border border-stone-200/60 flex flex-col justify-between"
+              className="p-3 bg-[var(--color-surface-subtle)] rounded-xl border border-[var(--color-border)] flex flex-col justify-between transition-colors"
             >
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-semibold text-stone-800 flex items-center gap-1.5">
-                    <Icon className="w-3.5 h-3.5 text-stone-600" />
+                  <span className="text-xs font-semibold text-[var(--color-text-primary)] flex items-center gap-1.5">
+                    <Icon className="w-3.5 h-3.5 text-[var(--color-text-muted)]" />
                     {label}
                   </span>
-                  {delta !== undefined && delta !== 0 && (
-                    <span 
-                      className={`text-xs font-bold tabular-nums px-1.5 py-0.2 rounded ${
-                        delta > 0 ? 'bg-emerald-50 text-emerald-800 border border-emerald-200/60' : 'bg-red-50 text-red-800 border border-red-200/60'
-                      }`}
-                    >
-                      {delta > 0 ? `+${delta}` : delta}
-                    </span>
-                  )}
                 </div>
-                <p className="text-[11px] text-stone-500 line-clamp-2 mb-2 leading-tight">
+                <p className="text-[11px] text-[var(--color-text-muted)] line-clamp-2 mb-2 leading-tight">
                   {description}
                 </p>
               </div>
 
               <div>
                 <div className="flex items-baseline justify-between text-xs mb-1">
-                  <span className="text-lg font-bold text-stone-900 tabular-nums">
+                  <span className="text-lg font-bold text-[var(--color-text-primary)] tabular-nums">
                     {value}
                   </span>
-                  <span className="text-[10px] text-stone-600">sobre 100</span>
+                  <span className="text-[10px] text-[var(--color-text-muted)]">sobre 100</span>
                 </div>
-                <div className="w-full bg-stone-200 rounded-full h-1.5 overflow-hidden">
+                <div className="w-full bg-[var(--color-surface-muted)] rounded-full h-1.5 overflow-hidden">
                   <div 
-                    className={`h-full ${colorClass} transition-all duration-500`}
-                    style={{ width: `${Math.min(Math.max(value, 0), 100)}%` }}
+                    className="h-full transition-all duration-500 rounded-full"
+                    style={{ 
+                      width: `${Math.min(Math.max(value, 0), 100)}%`,
+                      backgroundColor: colorVar
+                    }}
                     role="progressbar"
                     aria-valuenow={value}
                     aria-valuemin={0}

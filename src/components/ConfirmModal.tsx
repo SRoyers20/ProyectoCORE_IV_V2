@@ -24,32 +24,32 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-xs"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xs transition-opacity"
       role="dialog"
       aria-modal="true"
     >
-      <div className="bg-[#FAF7F2] border border-stone-300 rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4">
-        <div className="flex items-center gap-3 text-stone-900">
-          <div className="p-2 bg-amber-100/80 rounded-lg text-amber-800">
+      <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl max-w-md w-full p-6 shadow-xl space-y-4 transition-colors">
+        <div className="flex items-center gap-3 text-[var(--color-text-primary)]">
+          <div className="p-2 bg-[var(--color-accent-subtle)] border border-[var(--color-accent-border)] rounded-lg text-[var(--color-accent)]">
             <AlertCircle className="w-5 h-5" />
           </div>
-          <h3 className="text-lg font-serif font-bold text-stone-900">{title}</h3>
+          <h3 className="text-lg font-serif font-bold text-[var(--color-text-primary)]">{title}</h3>
         </div>
 
-        <p className="text-sm text-stone-600 leading-relaxed">
+        <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
           {message}
         </p>
 
         <div className="flex items-center justify-end gap-3 pt-2">
           <button
             onClick={onCancel}
-            className="px-4 py-2 text-sm text-stone-700 hover:text-stone-900 hover:bg-stone-200/50 rounded-lg transition-colors"
+            className="px-4 py-2 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-surface-subtle)] rounded-lg transition-colors cursor-pointer"
           >
             {cancelLabel}
           </button>
           <button
             onClick={onConfirm}
-            className="px-4 py-2 text-sm font-medium bg-red-800 text-white rounded-lg hover:bg-red-700 transition-colors shadow-xs"
+            className="px-4 py-2 text-sm font-semibold bg-red-700 hover:bg-red-600 text-white rounded-lg transition-colors shadow-xs cursor-pointer"
           >
             {confirmLabel}
           </button>

@@ -1,0 +1,1006 @@
+Aquí tienes el **prompt definitivo** para pegarlo en Google AI Studio Build. Está diseñado para transformar el prototipo actual en una experiencia de juego de mesa digital por turnos, clara, autogestionable, pedagógicamente sólida y alineada con la retroalimentación de la profesora.
+
+# Prompt definitivo
+
+```text
+Quiero que mejores y transformes por completo la aplicación web “DECIDE TU CAMINO”, conservando su idea central pero elevando significativamente su calidad académica, narrativa, visual y funcional.
+
+La aplicación debe convertirse en un juego de mesa digital educativo, multijugador local y por turnos, inspirado en una “escalerita”, pero con una identidad propia y un propósito reflexivo.
+
+No debe parecer un examen, una encuesta ni un tablero decorativo. Debe ser una experiencia clara, inmersiva, autogestionable y significativa para estudiantes universitarios.
+
+No agregues música, autenticación, base de datos, pagos ni llamadas a APIs externas para la lógica principal.
+
+==================================================
+1. IDENTIDAD DEL PROYECTO
+==================================================
+
+Nombre:
+
+“DECIDE TU CAMINO”
+
+Subtítulo:
+
+“Una escalera de decisiones, conciencia y realización personal”
+
+Frase central:
+
+“Cada paso es una decisión. Cada decisión transforma tu camino.”
+
+Tipo de experiencia:
+
+- Juego de mesa digital.
+- Multijugador local.
+- Sistema de turnos.
+- Entre 2 y 4 jugadores.
+- Duración aproximada: 10 a 15 minutos.
+- Funciona en un solo dispositivo.
+- No requiere login, conexión entre dispositivos ni base de datos.
+- Es autogestionable: cualquier persona debe poder entender y jugar sin ayuda constante de un tercero.
+
+El objetivo del juego no es simplemente llegar primero a la meta. El objetivo es que cada jugador construya un recorrido coherente entre sus decisiones, sus valores, sus hábitos y las consecuencias que está dispuesto a asumir.
+
+==================================================
+2. PROPÓSITO ACADÉMICO
+==================================================
+
+El hilo conductor del proyecto es:
+
+“La toma libre de decisiones para la realización personal”.
+
+La aplicación debe integrar de manera explícita y permanente los cuatro temas centrales de Core IV:
+
+1. Toma de decisiones / libertad.
+2. Hábitos.
+3. Autenticidad.
+4. Vida lograda.
+
+Estos cuatro temas no deben aparecer únicamente en la pantalla inicial. Deben estar presentes en:
+- Las instrucciones.
+- Los dilemas.
+- Las consecuencias.
+- Las casillas especiales.
+- Las escaleras y descensos.
+- Los indicadores.
+- El historial de decisiones.
+- El resultado final.
+- El mensaje de cierre.
+
+La aplicación debe permitir que el jugador comprenda que:
+- Las circunstancias influyen en las decisiones, pero no determinan completamente a la persona.
+- Ser libre implica elegir conscientemente y asumir las consecuencias.
+- Los hábitos son pequeñas acciones repetidas que construyen una trayectoria.
+- La autenticidad implica actuar de manera coherente con los propios principios y con el bien.
+- Una buena justificación no convierte automáticamente una mala acción en una acción correcta.
+- La realización personal no consiste únicamente en ganar, tener ventajas o recibir reconocimiento.
+- Las decisiones individuales afectan a otras personas.
+- Una vida lograda se construye con decisiones libres, responsables, coherentes y orientadas al bien.
+
+==================================================
+3. CONTEXTO DE LOS LIBROS
+==================================================
+
+Antes de comenzar, la aplicación debe explicar brevemente los dos libros para que cualquier jugador pueda entender las situaciones aunque no los haya leído.
+
+Agrega una pantalla titulada:
+
+“Dos caminos, una pregunta”
+
+Incluye dos tarjetas explicativas:
+
+A. Matar a un ruiseñor
+
+Título:
+“Actuar con integridad frente a la presión”
+
+Texto:
+“En la novela de Harper Lee, Scout Finch observa cómo su padre, Atticus, decide defender a Tom Robinson, un hombre inocente acusado injustamente. Atticus sabe que probablemente perderá el caso, pero elige actuar con integridad frente a los prejuicios y la presión social. Su historia plantea una pregunta central: ¿qué nos obliga a actuar con integridad aunque sepamos que podemos perder?”
+
+B. Crimen y castigo
+
+Título:
+“La conciencia frente a la justificación”
+
+Texto:
+“En la novela de Fiódor Dostoievski, Raskólnikov, un joven estudiante en dificultades económicas, convence a sí mismo de que una persona extraordinaria puede actuar por encima de las normas comunes. Tras cometer un crimen, descubre que la culpa y la conciencia no desaparecen con una justificación intelectual. Su historia plantea una pregunta central: ¿puede alguien justificar una mala acción con una buena razón?”
+
+C. Pregunta que une ambos libros
+
+“¿Qué decisiones estamos dispuestos a tomar cuando las circunstancias, la sociedad o nuestra propia mente nos presionan para actuar de otra forma?”
+
+Incluye un botón permanente llamado:
+“Contexto de los libros”
+
+Este botón debe estar disponible durante toda la partida y permitir consultar nuevamente esta información.
+
+No copies fragmentos extensos de las obras ni reproduzcas contenido protegido. Utiliza únicamente referencias argumentales generales, personajes, conflictos y temas ampliamente conocidos.
+
+==================================================
+4. CONFIGURACIÓN DE JUGADORES
+==================================================
+
+Permite seleccionar:
+
+- 2 jugadores.
+- 3 jugadores.
+- 4 jugadores.
+
+No permitas más de 4 jugadores en esta versión.
+
+En la pantalla de configuración:
+- Permite ingresar el nombre de cada jugador.
+- Permite elegir un color o avatar para cada participante.
+- Asigna una ficha visual diferente a cada jugador.
+- No permitas que dos jugadores usen el mismo color.
+- Si no se ingresa un nombre, usa por defecto: Jugador 1, Jugador 2, Jugador 3 y Jugador 4.
+
+Colores recomendados:
+- Azul oscuro.
+- Rojo oscuro.
+- Verde bosque.
+- Dorado.
+
+Cada ficha debe ser claramente identificable por color, nombre y número.
+
+==================================================
+5. TABLERO DE JUEGO
+==================================================
+
+Crea un tablero digital de 40 casillas.
+
+Distribución:
+- Casilla 1: inicio.
+- Casilla 40: “Cumbre de la realización personal”.
+- Organiza el tablero como un recorrido en serpentina o como una escalera visual.
+- Cada casilla debe tener un número visible.
+- Las fichas deben ubicarse sobre las casillas correspondientes.
+- Si varias fichas están en la misma casilla, organízalas sin taparse completamente.
+
+La casilla 40 no debe terminar automáticamente la partida sin mostrar una reflexión final.
+
+El tablero debe ser el elemento central de la interfaz.
+
+==================================================
+6. TIPOS DE CASILLA
+==================================================
+
+Incluye los siguientes tipos de casilla:
+
+A. Casilla normal
+El jugador permanece en la casilla y continúa el turno.
+
+B. Casilla de dilema
+El jugador debe responder una situación relacionada con Core IV y los libros.
+
+C. Casilla de subida
+El jugador avanza automáticamente a una casilla superior.
+
+D. Casilla de descenso
+El jugador retrocede automáticamente a una casilla inferior.
+
+E. Casilla de conciencia
+El jugador revisa una consecuencia de una decisión anterior.
+
+F. Casilla de solidaridad
+El jugador puede ayudar a otro participante o priorizar su propio avance.
+
+G. Casilla de hábitos
+El jugador observa el patrón de decisiones que ha construido hasta ese momento.
+
+H. Casilla de reflexión
+El jugador debe leer una pregunta breve antes de continuar.
+
+I. Casilla de proyecto de vida
+El jugador debe escoger qué valor prioriza en una situación final.
+
+Distribuye las casillas especiales de forma equilibrada. No llenes el tablero de eventos.
+
+Ejemplo de distribución:
+
+- Casilla 4: Dilema.
+- Casilla 7: Subida.
+- Casilla 10: Hábitos.
+- Casilla 13: Descenso.
+- Casilla 16: Dilema.
+- Casilla 19: Conciencia.
+- Casilla 22: Solidaridad.
+- Casilla 25: Subida.
+- Casilla 28: Dilema.
+- Casilla 31: Descenso.
+- Casilla 34: Proyecto de vida.
+- Casilla 37: Reflexión.
+- Casilla 40: Cumbre de la realización personal.
+
+Puedes ajustar la distribución si mejora la jugabilidad, pero conserva todos los tipos de casilla.
+
+==================================================
+7. SISTEMA DE TURNOS
+==================================================
+
+El juego debe tener un sistema de turnos claro y visible.
+
+Orden del turno:
+
+1. Mostrar quién tiene el turno.
+2. Resaltar visualmente la ficha de ese jugador.
+3. Mostrar el botón “Lanzar dado”.
+4. Deshabilitar el botón mientras el dado está en movimiento.
+5. Mostrar una animación breve del dado.
+6. Mostrar el número obtenido.
+7. Mover la ficha paso a paso con una animación corta.
+8. Activar el efecto de la casilla final.
+9. Mostrar el dilema, evento, subida, descenso o reflexión correspondiente.
+10. Actualizar los indicadores del jugador.
+11. Mostrar una tarjeta de retroalimentación.
+12. Activar el botón “Finalizar turno”.
+13. Pasar el turno al siguiente jugador.
+
+No permitas lanzar el dado dos veces en el mismo turno.
+
+No permitas avanzar sin responder un dilema o completar un evento.
+
+Muestra siempre:
+- Jugador actual.
+- Número del turno.
+- Posición actual de cada jugador.
+- Valor obtenido en el dado.
+- Botón de acción disponible.
+- Estado de la partida.
+- Indicadores del jugador actual.
+
+==================================================
+8. DADO INTERACTIVO
+==================================================
+
+Crea un dado digital de seis caras.
+
+Debe incluir:
+- Elemento visual grande y claro.
+- Números del 1 al 6.
+- Animación de lanzamiento.
+- Resultado aleatorio entre 1 y 6.
+- Botón “Lanzar dado”.
+- Texto explicativo:
+
+“El dado representa la incertidumbre y las circunstancias, pero tú decides cómo responder a lo que ocurre.”
+
+La animación debe durar entre 700 y 1200 milisegundos.
+
+Durante la animación:
+- Deshabilita el botón.
+- Evita que se pueda cambiar de pantalla.
+- Muestra una animación visual de giro o cambio rápido de caras.
+
+Al terminar:
+- Detén la animación.
+- Muestra claramente el número obtenido.
+- Mueve la ficha la cantidad exacta de casillas.
+- Si el resultado lleva al jugador más allá de la casilla 40, aplica esta regla: el jugador debe obtener exactamente el número necesario para llegar a la casilla 40. Si obtiene más, permanece en su casilla y muestra el mensaje:
+
+“La meta exige precisión. Debes esperar otro turno.”
+
+==================================================
+9. ESCALERAS Y DESCENSOS
+==================================================
+
+Incluye al menos:
+
+Escaleras:
+- 7 → 14.
+- 15 → 24.
+- 25 → 33.
+
+Descensos:
+- 18 → 11.
+- 29 → 20.
+- 36 → 27.
+
+Las escaleras y descensos no deben ser arbitrarios. Cada uno debe tener una explicación conceptual.
+
+Ejemplos:
+
+Subida 7 → 14:
+- Tema: actuar con integridad aunque exista presión social.
+- Mensaje: “Una decisión coherente puede fortalecer tu camino, aunque no produzca una recompensa inmediata”.
+
+Subida 15 → 24:
+- Tema: asumir una responsabilidad y reparar el daño.
+- Mensaje: “Reconocer un error puede convertirse en una oportunidad de crecimiento”.
+
+Subida 25 → 33:
+- Tema: buscar la verdad y actuar con justicia.
+- Mensaje: “La defensa de la dignidad de otra persona puede transformar tu comprensión de la justicia”.
+
+Descenso 18 → 11:
+- Tema: dejar que la mayoría decida sin reflexión.
+- Mensaje: “La presión social puede hacerte retroceder en autonomía e integridad”.
+
+Descenso 29 → 20:
+- Tema: justificar una mala acción mediante una buena razón.
+- Mensaje: “Una explicación inteligente no elimina la responsabilidad”.
+
+Descenso 36 → 27:
+- Tema: ignorar las consecuencias en los demás.
+- Mensaje: “La realización personal pierde sentido cuando se construye perjudicando a otras personas”.
+
+Muestra una animación clara de subida o descenso y un mensaje breve.
+
+==================================================
+10. INDICADORES DE CADA JUGADOR
+==================================================
+
+Cada jugador debe tener cuatro indicadores visibles, correspondientes a los cuatro temas centrales:
+
+1. Libertad responsable.
+2. Consistencia.
+3. Coherencia personal.
+4. Realización.
+
+Los valores iniciales deben ser 50 sobre 100.
+
+Las decisiones deben modificar estos indicadores de manera moderada, por ejemplo entre -8 y +10.
+
+Los indicadores no deben interpretarse como una calificación moral definitiva. Deben mostrar una tendencia del recorrido.
+
+Muestra los indicadores:
+- En un panel lateral en computador.
+- En una tarjeta desplegable o sección inferior en celular.
+- Con número y barra visual.
+- Con icono y texto.
+- Sin depender solamente de colores.
+
+Ejemplo:
+
+Jugador 1
+- Libertad responsable: 62/100.
+- Consistencia: 58/100.
+- Coherencia personal: 74/100.
+- Realización: 66/100.
+
+El avance en el tablero y los indicadores deben ser dos elementos diferentes. Un jugador puede ir adelante en posiciones, pero tener menor coherencia o realización.
+
+==================================================
+11. DILEMAS DURANTE LA PARTIDA
+==================================================
+
+Crea al menos 12 cartas de dilema para que no todos los eventos sean iguales.
+
+Cada carta debe tener:
+- Título.
+- Contexto de 70 a 120 palabras.
+- Tema principal de Core IV.
+- Conexión narrativa con uno de los libros.
+- Cuatro opciones.
+- Efectos sobre los cuatro indicadores.
+- Consecuencia narrativa.
+- Retroalimentación explicativa.
+- Pregunta de reflexión.
+
+Distribuye las cartas entre estos temas:
+- Toma de decisiones / libertad.
+- Hábitos.
+- Autenticidad.
+- Vida lograda.
+- Presión social.
+- Justicia.
+- Racionalización.
+- Conciencia.
+- Responsabilidad.
+- Relaciones.
+- Proyecto de vida.
+
+Incluye referencias narrativas a:
+
+“Matar a un ruiseñor”:
+- Atticus.
+- Scout.
+- Defensa de la justicia.
+- Prejuicio.
+- Actuar con integridad frente a la mayoría.
+
+“Crimen y castigo”:
+- Raskólnikov.
+- Aislamiento.
+- Teoría sobre estar por encima de la ley.
+- Culpa.
+- Conciencia.
+- Responsabilidad.
+
+No copies citas largas ni fragmentos protegidos. Utiliza paráfrasis y situaciones originales inspiradas en los conflictos.
+
+Ejemplo de carta:
+
+Título:
+“La mayoría ya decidió”
+
+Tema:
+“Toma de decisiones / libertad”
+
+Conexión literaria:
+“Matar a un ruiseñor”
+
+Contexto:
+“En tu grupo, varias personas acusan a un estudiante de haber actuado mal. Nadie ha escuchado su versión, pero todos quieren sancionarlo rápidamente. Si pides que se revise la situación, algunos compañeros podrían pensar que estás defendiendo lo indefendible.”
+
+Opciones:
+A. Apoyar la decisión de la mayoría.
+B. Pedir que se escuche a la persona.
+C. Guardar silencio.
+D. Investigar el caso por tu cuenta y proponer una solución.
+
+Cada opción debe tener consecuencias distintas y razonables. No señales antes de responder cuál es la opción correcta.
+
+==================================================
+12. RETROALIMENTACIÓN DESPUÉS DE CADA DECISIÓN
+==================================================
+
+Este es el cambio más importante.
+
+Después de cada respuesta, la aplicación debe mostrar una tarjeta de retroalimentación con cinco bloques:
+
+1. Tu decisión.
+2. Consecuencia narrativa.
+3. Conexión con el libro.
+4. Conexión con Core IV.
+5. Pregunta de profundización.
+
+Ejemplo:
+
+Tu decisión:
+“Elegiste guardar silencio.”
+
+Consecuencia narrativa:
+“El grupo continuó con su juicio, pero la persona afectada quedó sin una voz que la defendiera.”
+
+Conexión con el libro:
+“Esta situación recuerda el juicio contra Tom Robinson: la opinión colectiva puede sustituir la búsqueda de la verdad.”
+
+Conexión con Core IV:
+“Tema: toma de decisiones y libertad. Aunque las circunstancias limitan tus opciones, todavía puedes decidir cómo responder.”
+
+Pregunta de profundización:
+“¿Qué diferencia hay entre no actuar por miedo y decidir conscientemente no intervenir?”
+
+La retroalimentación no debe insultar, avergonzar ni clasificar moralmente al jugador. Debe invitarlo a analizar su decisión.
+
+No muestres únicamente el puntaje obtenido.
+
+==================================================
+13. MECÁNICA DE HÁBITOS
+==================================================
+
+El tema de hábitos debe aparecer como una mecánica real.
+
+Cada vez que el jugador elige una opción, la aplicación registra su tipo:
+
+- Decisión de integridad.
+- Decisión por conveniencia.
+- Decisión por presión social.
+- Decisión solidaria.
+- Decisión de evitación.
+- Decisión de reconocimiento de error.
+- Decisión de racionalización.
+
+Después de tres o cuatro decisiones similares, la aplicación debe mostrar un mensaje de patrón:
+
+“Has tomado varias decisiones orientadas a evitar el conflicto. Esto no define quién eres, pero muestra una tendencia que puede influir en tu proyecto de vida.”
+
+También debe existir una casilla especial:
+
+“El peso de lo repetido”
+
+Texto:
+“Las decisiones pequeñas se acumulan. Revisa el patrón que has construido hasta ahora.”
+
+La mecánica debe permitir ver que las pequeñas decisiones repetidas construyen una trayectoria.
+
+==================================================
+14. INTERACCIÓN ENTRE JUGADORES
+==================================================
+
+Incluye eventos ocasionales de interacción.
+
+Ejemplos:
+- Un jugador puede ayudar a otro.
+- Dos jugadores pueden discutir una decisión.
+- Todos pueden votar sobre una situación.
+- Un jugador puede intercambiar una ventaja por un costo.
+- Todos pueden enfrentar un dilema colectivo.
+
+No permitas que la interacción convierta el juego en una discusión desordenada. Cada evento debe tener instrucciones claras y una duración breve.
+
+Para eventos grupales:
+- Muestra la situación.
+- Permite que todos lean.
+- Pide una elección sencilla o una votación.
+- Muestra una consecuencia común.
+- Ajusta los indicadores de acuerdo con la participación.
+
+Las decisiones de solidaridad deben modificar:
+- Coherencia personal.
+- Realización.
+- Relaciones.
+
+No obligues siempre a ayudar. Permite que la decisión tenga un costo real.
+
+==================================================
+15. CASILLAS DE CONCIENCIA
+==================================================
+
+Las casillas de conciencia deben conectar el presente con decisiones anteriores.
+
+Ejemplo:
+
+“En un turno anterior decidiste guardar silencio ante una injusticia. Ahora observas una consecuencia que afecta a otra persona. ¿Qué haces?”
+
+Si el jugador no tiene una decisión anterior relevante, muestra una situación general.
+
+Las cartas de conciencia deben:
+- Hacer visible que las decisiones tienen continuidad.
+- Evitar castigos arbitrarios.
+- Permitir reparar parcialmente el daño.
+- Dar importancia a reconocer errores.
+
+==================================================
+16. FIN DE LA PARTIDA
+==================================================
+
+La partida debe terminar cuando ocurra una de estas condiciones:
+
+Opción recomendada:
+- Un jugador llega a la casilla 40.
+- Se completa el turno actual.
+- Se permite que los demás jugadores tengan una última oportunidad.
+- Después se muestran los resultados.
+
+No presentes automáticamente al jugador que llegó primero como ganador absoluto.
+
+Calcula un resultado final usando:
+- Posición en el tablero.
+- Libertad responsable.
+- Consistencia.
+- Coherencia personal.
+- Realización.
+
+La posición debe tener peso, pero no ser el único criterio.
+
+Utiliza una fórmula transparente y sencilla, por ejemplo:
+
+Puntaje de recorrido:
+- Posición final: máximo 40 puntos.
+- Libertad responsable: máximo 20 puntos.
+- Consistencia: máximo 15 puntos.
+- Coherencia personal: máximo 15 puntos.
+- Realización: máximo 10 puntos.
+
+No muestres la fórmula de manera fría o competitiva en la pantalla principal. Presenta el resultado como un “perfil de recorrido”.
+
+Define perfiles posibles:
+
+1. Integridad activa.
+2. Responsabilidad solidaria.
+3. Libertad en construcción.
+4. Razón sin conciencia.
+5. Proyecto de vida en búsqueda.
+6. Camino equilibrado.
+
+Para cada jugador muestra:
+- Posición final.
+- Indicadores finales.
+- Perfil de recorrido.
+- Dos fortalezas.
+- Dos aspectos para revisar.
+- Una conexión con Atticus o Scout.
+- Una conexión con Raskólnikov.
+- Una pregunta personal de cierre.
+
+Mensaje de cierre general:
+
+“Llegar más lejos no siempre significa haber elegido mejor. La realización personal implica revisar cómo avanzaste, qué valores protegiste y qué consecuencias aceptaste.”
+
+==================================================
+17. MENSAJE DE CIERRE SOBRE LA VIDA LOGRADA
+==================================================
+
+La pantalla final debe responder claramente:
+
+¿Qué es una vida lograda?
+¿Cómo se llega a ella?
+
+Incluye el siguiente mensaje:
+
+“¿Qué es una vida lograda?”
+
+“Una vida lograda no consiste únicamente en llegar primero, obtener reconocimiento o evitar las dificultades. Se construye cuando una persona toma decisiones libres y responsables, mantiene hábitos que la orientan hacia aquello que considera valioso, actúa con autenticidad y considera la dignidad de las demás personas.”
+
+“¿Cómo se llega a ella?”
+
+“No se llega de una sola vez. Se construye mediante decisiones repetidas, pequeñas acciones coherentes y la disposición a reconocer errores, reparar daños y orientar la vida hacia un proyecto con sentido.”
+
+“Tu recorrido no define quién eres para siempre.”
+
+“Te muestra la dirección en la que has estado avanzando. La pregunta no es solo si llegaste a la meta, sino qué tipo de persona fuiste construyendo durante el camino.”
+
+Después muestra preguntas personales:
+
+- ¿En qué momento actuaste por convicción?
+- ¿En qué momento actuaste por miedo o conveniencia?
+- ¿Qué hábito de decisión estás construyendo?
+- ¿Tus decisiones fueron realmente libres?
+- ¿Consideraste la dignidad y el bienestar de los demás?
+- ¿Qué principio debería orientar tu proyecto de vida?
+- ¿Qué decisión de esta experiencia se parece más a una situación real de tu vida?
+
+==================================================
+18. PANTALLAS DE LA APLICACIÓN
+==================================================
+
+Crea estas pantallas:
+
+1. Pantalla de bienvenida.
+2. Pantalla de propósito académico.
+3. Pantalla de contexto de los libros.
+4. Pantalla de instrucciones.
+5. Pantalla de configuración de jugadores.
+6. Pantalla principal del tablero.
+7. Modal o pantalla de lanzamiento del dado.
+8. Modal de movimiento.
+9. Modal de escalera o descenso.
+10. Modal de dilema.
+11. Modal de retroalimentación.
+12. Modal de solidaridad o evento grupal.
+13. Pantalla de resumen del turno.
+14. Pantalla de resultados finales.
+15. Pantalla de revisión del recorrido.
+
+El usuario debe poder:
+- Iniciar una partida.
+- Consultar las instrucciones.
+- Consultar el contexto de los libros.
+- Consultar los indicadores.
+- Revisar el historial de decisiones.
+- Reiniciar la partida.
+- Volver a la pantalla inicial.
+
+==================================================
+19. HISTORIAL DE DECISIONES
+==================================================
+
+Guarda en el estado local de la aplicación el historial de cada jugador.
+
+Cada registro debe mostrar:
+- Turno.
+- Jugador.
+- Casilla.
+- Tema.
+- Situación.
+- Opción escogida.
+- Consecuencia.
+- Cambios en indicadores.
+- Conexión con el libro.
+- Conexión con Core IV.
+
+Crea una pantalla “Mi recorrido” para revisar las decisiones de cada jugador.
+
+El historial debe ser visible solamente en el dispositivo y no debe enviarse a ningún servidor.
+
+==================================================
+20. DISEÑO VISUAL
+==================================================
+
+Usa un estilo de juego de mesa académico, elegante y contemporáneo.
+
+Inspiración visual:
+- Tablero de mesa.
+- Camino ascendente.
+- Libro abierto.
+- Escalera.
+- Balanza de justicia.
+- Sombra y luz para representar conflicto y conciencia.
+
+Colores:
+- Fondo marfil o beige suave.
+- Azul oscuro.
+- Verde bosque.
+- Rojo oscuro.
+- Dorado.
+- Gris carbón.
+
+No utilices:
+- Estética infantil.
+- Exceso de colores neón.
+- Ruletas o elementos de apuestas.
+- Monedas, dinero o propiedades al estilo Monopoly.
+- Imágenes protegidas de las portadas de los libros.
+
+El tablero debe ser el elemento central de la interfaz.
+
+En la parte superior muestra:
+- Nombre del juego.
+- Turno actual.
+- Botón de instrucciones.
+- Botón de contexto de los libros.
+- Botón de reinicio.
+
+En la zona principal:
+- Tablero.
+- Fichas.
+- Dado.
+- Botón de lanzar.
+- Panel de jugador actual.
+
+En móvil:
+- Coloca el tablero arriba.
+- Coloca los controles debajo.
+- Permite desplazamiento vertical.
+- Mantén visible el jugador actual.
+- Evita que el tablero quede demasiado pequeño.
+
+==================================================
+21. AUTOGESTIÓN Y REGLAS
+==================================================
+
+Incluye una pantalla de reglas que explique:
+
+1. El objetivo del juego.
+2. La cantidad de jugadores.
+3. Cómo lanzar el dado.
+4. Cómo mover la ficha.
+5. Qué hacen las escaleras.
+6. Qué hacen los descensos.
+7. Qué ocurre en las casillas de dilema.
+8. Cómo se modifican los indicadores.
+9. Cómo se registran los hábitos.
+10. Cómo termina la partida.
+11. Por qué llegar primero no equivale automáticamente a tener el mejor recorrido.
+
+Incluye mensajes de ayuda contextual.
+
+Ejemplos:
+- “Es el turno de Camila”.
+- “Debes lanzar el dado”.
+- “Selecciona una opción para continuar”.
+- “La ficha se moverá tres casillas”.
+- “Esta casilla activa un dilema”.
+- “Lee la consecuencia antes de finalizar tu turno”.
+- “La partida todavía no termina: los demás jugadores tendrán una última oportunidad”.
+
+==================================================
+22. REQUISITOS TÉCNICOS
+==================================================
+
+Construye la aplicación usando React y CSS, o una estructura equivalente compatible con Google AI Studio Build.
+
+Utiliza componentes organizados como:
+
+- App.
+- WelcomeScreen.
+- AcademicPurpose.
+- BookContext.
+- InstructionsModal.
+- PlayerSetup.
+- GameBoard.
+- BoardCell.
+- PlayerToken.
+- Dice.
+- TurnPanel.
+- DilemmaModal.
+- FeedbackModal.
+- LadderAnimation.
+- SlideAnimation.
+- SolidarityEvent.
+- ConsciousnessEvent.
+- HabitPatternPanel.
+- PlayerStats.
+- DecisionHistory.
+- GameResults.
+- JourneyReview.
+
+Define estructuras de datos claras.
+
+Ejemplo de jugador:
+
+{
+  id: 1,
+  name: "Jugador 1",
+  color: "#234E70",
+  position: 1,
+  stats: {
+    libertadResponsable: 50,
+    consistencia: 50,
+    coherenciaPersonal: 50,
+    realizacion: 50
+  },
+  decisions: [],
+  habits: [],
+  completed: false
+}
+
+Ejemplo de casilla:
+
+{
+  id: 7,
+  type: "ladder",
+  destination: 14,
+  title: "Integridad bajo presión",
+  message: "Una decisión coherente fortalece tu camino."
+}
+
+Ejemplo de carta de dilema:
+
+{
+  id: "dilemma-01",
+  title: "La mayoría ya decidió",
+  theme: "Toma de decisiones / libertad",
+  bookConnection: "Matar a un ruiseñor",
+  context: "...",
+  options: [
+    {
+      id: "a",
+      text: "...",
+      effects: {
+        libertadResponsable: -2,
+        consistencia: -3,
+        coherenciaPersonal: -5,
+        realizacion: -2
+      },
+      consequence: "...",
+      bookConnection: "...",
+      coreConnection: "...",
+      reflection: "..."
+    }
+  ]
+}
+
+Mantén toda la información editable en archivos o constantes separadas.
+
+No uses base de datos.
+No uses autenticación.
+No uses APIs externas para la lógica principal.
+No uses inteligencia artificial para decidir las consecuencias.
+No dependas de conexión a internet después de cargar la aplicación.
+No agregues música por ahora.
+
+Utiliza estado local para:
+- Jugadores.
+- Turno actual.
+- Resultado del dado.
+- Posiciones.
+- Indicadores.
+- Historial.
+- Patrones de hábitos.
+- Estado de modales.
+- Estado de la partida.
+
+==================================================
+23. VALIDACIONES Y CONTROL DE ERRORES
+==================================================
+
+Verifica que:
+- El usuario seleccione entre 2 y 4 jugadores.
+- No se repitan colores.
+- No se pueda lanzar el dado fuera del turno.
+- No se pueda lanzar dos veces en un mismo turno.
+- No se pueda avanzar sin responder un dilema.
+- No se pueda finalizar el turno antes de completar el evento.
+- Las fichas nunca salgan del tablero.
+- Las escaleras y descensos se activen una sola vez por movimiento.
+- Los indicadores nunca sean menores que 0 ni mayores que 100.
+- El botón de reinicio solicite confirmación.
+- La pantalla de resultados solo aparezca cuando la partida realmente termine.
+- Todos los jugadores tengan un resultado final.
+- La aplicación no se bloquee si dos fichas ocupan la misma casilla.
+- El jugador que llega a la casilla 40 no finalice automáticamente sin reflexión.
+
+==================================================
+24. ACCESIBILIDAD
+==================================================
+
+Asegúrate de que:
+- Los botones sean grandes y legibles.
+- Exista buen contraste.
+- Las fichas tengan nombre y color.
+- Los efectos no dependan exclusivamente de color.
+- Los modales puedan cerrarse de manera clara.
+- La navegación sea posible con teclado.
+- Las instrucciones sean comprensibles.
+- La aplicación funcione en celular, tableta y computador.
+- El juego pueda realizarse sin sonido.
+- No se soliciten datos personales.
+
+==================================================
+25. CALIDAD DEL CONTENIDO
+==================================================
+
+El contenido debe ser claro, respetuoso y apropiado para estudiantes universitarios.
+
+No presentes la ética como una lista de respuestas obvias.
+
+No afirmes que un personaje representa toda una teoría moral.
+
+No reduzcas “Matar a un ruiseñor” a una historia simple de buenos contra malos.
+
+No reduzcas “Crimen y castigo” únicamente a “un asesino que siente culpa”.
+
+Presenta los conflictos como oportunidades para reflexionar sobre:
+- La libertad en circunstancias difíciles.
+- El impacto de los prejuicios.
+- La responsabilidad individual.
+- La tensión entre razón y conciencia.
+- La diferencia entre justificar y responder por una acción.
+- La construcción de un proyecto de vida.
+- La vida lograda.
+
+==================================================
+26. PRIORIDADES DE IMPLEMENTACIÓN
+==================================================
+
+Construye primero una versión funcional completa.
+
+Prioridad 1:
+- Pantalla inicial con contexto de los libros.
+- Instrucciones claras.
+- Configuración de 2 a 4 jugadores.
+- Tablero de 40 casillas.
+- Fichas funcionales.
+- Turnos.
+- Dado interactivo.
+- Movimiento automático.
+- Escaleras y descensos.
+- Finalización de turnos.
+
+Prioridad 2:
+- Dilemas.
+- Retroalimentación explicativa.
+- Indicadores de los cuatro temas centrales.
+- Historial de decisiones.
+
+Prioridad 3:
+- Mecánica de hábitos.
+- Eventos de solidaridad.
+- Eventos de conciencia.
+- Resultados personalizados.
+- Mensaje de cierre sobre la vida lograda.
+
+Prioridad 4:
+- Optimización para celular.
+- Accesibilidad.
+- Corrección de errores.
+- Mejoras de diseño.
+
+No reduzcas el juego a un tablero decorativo. Todas las acciones principales deben funcionar.
+
+Después de construirlo, prueba la partida completa con:
+- 2 jugadores.
+- 3 jugadores.
+- 4 jugadores.
+- Una subida.
+- Un descenso.
+- Un dilema.
+- Una casilla de conciencia.
+- Una casilla de hábitos.
+- Una situación donde un jugador obtenga un número superior al necesario para llegar a la meta.
+- Dos fichas en la misma casilla.
+- Reinicio de partida.
+
+Corrige cualquier error de estado, navegación o visualización que encuentres.
+
+==================================================
+27. RESULTADO ESPERADO
+==================================================
+
+La aplicación final debe permitir que un estudiante que no conoce los libros pueda:
+- Entender el propósito del juego.
+- Comprender el contexto de las historias.
+- Jugar sin ayuda externa.
+- Tomar decisiones.
+- Ver las consecuencias.
+- Identificar los temas de Core IV.
+- Reflexionar sobre sus hábitos.
+- Comprender qué es una vida lograda.
+- Revisar su recorrido y extraer una lección personal.
+
+La experiencia debe transmitir este mensaje:
+
+“La vida lograda no se alcanza en un solo momento. Se construye con decisiones libres, hábitos coherentes, autenticidad y responsabilidad frente a los demás.”
+```

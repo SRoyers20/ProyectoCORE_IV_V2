@@ -39,7 +39,7 @@ export const DilemmaCard: React.FC<DilemmaCardProps> = ({
       <div>
         <button
           onClick={onBackToStaircase}
-          className="inline-flex items-center gap-1.5 text-xs font-medium text-stone-600 hover:text-stone-900 transition-colors cursor-pointer"
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Volver a la escalera</span>
@@ -47,43 +47,43 @@ export const DilemmaCard: React.FC<DilemmaCardProps> = ({
       </div>
 
       {/* Main Card Container */}
-      <div className="bg-white/95 border border-stone-200/90 rounded-2xl p-6 sm:p-8 shadow-xs space-y-6">
+      <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-6 sm:p-8 shadow-xs space-y-6 transition-colors">
         {/* Step Badge & Thematic Tag */}
-        <div className="space-y-2 border-b border-stone-100 pb-5">
+        <div className="space-y-2 border-b border-[var(--color-border-subtle)] pb-5">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <span className="text-xs uppercase font-bold tracking-widest text-amber-800">
+            <span className="text-xs uppercase font-bold tracking-widest text-[var(--color-accent)]">
               Peldaño {dilemma.step} de 10 · {dilemma.theme}
             </span>
 
             {/* Book Connection Tag - Required visible label */}
-            <span className="inline-flex items-center gap-1.5 text-xs text-stone-600 font-medium">
-              <BookOpen className="w-3.5 h-3.5 text-amber-800 shrink-0" />
+            <span className="inline-flex items-center gap-1.5 text-xs text-[var(--color-text-secondary)] font-medium">
+              <BookOpen className="w-3.5 h-3.5 text-[var(--color-accent)] shrink-0" />
               <span>{dilemma.bookConnection}</span>
             </span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-stone-900 leading-tight">
+          <h1 className="text-2xl sm:text-3xl font-serif font-bold text-[var(--color-text-primary)] leading-tight">
             {dilemma.title}
           </h1>
 
-          <div className="text-xs text-stone-500 italic">
+          <div className="text-xs text-[var(--color-text-muted)] italic">
             {dilemma.literaryContext}
           </div>
         </div>
 
         {/* Narrative Context (80-120 words) */}
-        <div className="p-4 sm:p-5 bg-stone-50/90 border border-stone-200/80 rounded-xl space-y-3">
-          <div className="text-[11px] uppercase font-bold tracking-wider text-stone-500">
+        <div className="p-4 sm:p-5 bg-[var(--color-surface-subtle)] border border-[var(--color-border)] rounded-xl space-y-3 transition-colors">
+          <div className="text-[11px] uppercase font-bold tracking-wider text-[var(--color-text-muted)]">
             Situación y contexto
           </div>
-          <p className="text-sm sm:text-base text-stone-800 font-serif leading-relaxed">
+          <p className="text-sm sm:text-base text-[var(--color-text-primary)] font-serif leading-relaxed">
             {dilemma.context}
           </p>
 
-          <div className="pt-2 border-t border-stone-200/60 flex items-start gap-2 text-xs text-amber-900/90 font-sans">
-            <Compass className="w-4 h-4 text-amber-800 shrink-0 mt-0.5" />
+          <div className="pt-2 border-t border-[var(--color-border-subtle)] flex items-start gap-2 text-xs text-[var(--color-text-secondary)] font-sans">
+            <Compass className="w-4 h-4 text-[var(--color-accent)] shrink-0 mt-0.5" />
             <div>
-              <strong className="font-semibold text-stone-900">Conflicto central:</strong>{' '}
+              <strong className="font-semibold text-[var(--color-text-primary)]">Conflicto central:</strong>{' '}
               {dilemma.coreConflict}
             </div>
           </div>
@@ -91,7 +91,7 @@ export const DilemmaCard: React.FC<DilemmaCardProps> = ({
 
         {/* 4 Choices */}
         <div className="space-y-3">
-          <div className="text-xs uppercase font-bold tracking-wider text-stone-500">
+          <div className="text-xs uppercase font-bold tracking-wider text-[var(--color-text-muted)]">
             ¿Qué decides hacer? Selecciona una postura:
           </div>
 
@@ -112,17 +112,17 @@ export const DilemmaCard: React.FC<DilemmaCardProps> = ({
                   tabIndex={0}
                   role="button"
                   aria-pressed={isSelected}
-                  className={`p-4 rounded-xl border text-left cursor-pointer transition-all flex items-start gap-3.5 focus:outline-none focus:ring-2 focus:ring-amber-700/30 ${
+                  className={`p-4 rounded-xl border text-left cursor-pointer transition-all flex items-start gap-3.5 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] ${
                     isSelected
-                      ? 'bg-amber-50/60 border-amber-700/80 ring-1 ring-amber-700/40 shadow-xs'
-                      : 'bg-white border-stone-200/90 hover:border-stone-300 hover:bg-stone-50/50'
+                      ? 'bg-[var(--color-accent-subtle)] border-[var(--color-accent)] ring-1 ring-[var(--color-accent-border)] shadow-xs'
+                      : 'bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-border-strong)] hover:bg-[var(--color-surface-subtle)]'
                   }`}
                 >
                   <div
                     className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5 border transition-colors ${
                       isSelected
-                        ? 'bg-amber-800 border-amber-800 text-white'
-                        : 'border-stone-300 bg-stone-50 text-stone-600'
+                        ? 'bg-[var(--color-accent)] border-[var(--color-accent)] text-[var(--color-primary-btn-text)]'
+                        : 'border-[var(--color-border)] bg-[var(--color-surface-subtle)] text-[var(--color-text-secondary)]'
                     }`}
                   >
                     {isSelected ? <Check className="w-3.5 h-3.5 stroke-[2.5]" /> : option.id.toUpperCase()}
@@ -130,14 +130,14 @@ export const DilemmaCard: React.FC<DilemmaCardProps> = ({
 
                   <div className="space-y-1 flex-1">
                     <div className="flex items-baseline justify-between gap-2">
-                      <span className="font-semibold text-stone-900 text-sm">
+                      <span className="font-semibold text-[var(--color-text-primary)] text-sm">
                         {option.label}
                       </span>
-                      <span className="text-[11px] text-stone-600 italic">
+                      <span className="text-[11px] text-[var(--color-text-muted)] italic">
                         {option.philosophicalStance}
                       </span>
                     </div>
-                    <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed">
                       {option.text}
                     </p>
                   </div>
@@ -149,21 +149,25 @@ export const DilemmaCard: React.FC<DilemmaCardProps> = ({
 
         {/* Validation warning */}
         {validationError && (
-          <div className="p-3 bg-red-50 border border-red-200 rounded-xl flex items-center gap-2 text-xs text-red-800">
-            <AlertCircle className="w-4 h-4 shrink-0 text-red-700" />
+          <div className="p-3 rounded-xl flex items-center gap-2 text-xs border" style={{
+            backgroundColor: 'var(--color-negative-bg)',
+            borderColor: 'var(--color-negative-border)',
+            color: 'var(--color-negative-text)'
+          }}>
+            <AlertCircle className="w-4 h-4 shrink-0" />
             <span>{validationError}</span>
           </div>
         )}
 
         {/* Footer Actions */}
-        <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
-          <span className="text-xs text-stone-500 hidden sm:inline">
+        <div className="pt-4 border-t border-[var(--color-border-subtle)] flex items-center justify-between">
+          <span className="text-xs text-[var(--color-text-muted)] hidden sm:inline">
             Tus indicadores se actualizarán tras confirmar tu decisión.
           </span>
 
           <button
             onClick={handleConfirm}
-            className="w-full sm:w-auto px-6 py-3 bg-stone-900 text-stone-50 text-sm font-semibold rounded-xl hover:bg-stone-800 transition-colors shadow-xs cursor-pointer"
+            className="w-full sm:w-auto px-6 py-3 bg-[var(--color-primary-btn)] text-[var(--color-primary-btn-text)] text-sm font-semibold rounded-xl hover:opacity-90 transition-opacity shadow-xs cursor-pointer"
           >
             Confirmar decisión y ver consecuencias
           </button>

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   AppScreen, 
   Indicators, 
@@ -11,7 +11,8 @@ import {
   Dilemma, 
   DilemmaOption, 
   DecisionRecord,
-  IndicatorEffects
+  HabitType,
+  calculateVisibleStats
 } from './types';
 import { DILEMMAS } from './data/dilemmas';
 import { calculateFinalProfile } from './data/finalArchetypes';
@@ -40,6 +41,7 @@ export default function App() {
   const [screen, setScreen] = useState<AppScreen>('welcome');
   const [initialProfile, setInitialProfile] = useState<InitialProfile | null>(null);
   const [indicators, setIndicators] = useState<Indicators>(DEFAULT_INDICATORS);
+  const [habitsHistory, setHabitsHistory] = useState<HabitType[]>([]);
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   const [history, setHistory] = useState<DecisionRecord[]>([]);
@@ -47,7 +49,6 @@ export default function App() {
   // Current active decision state
   const [activeDilemma, setActiveDilemma] = useState<Dilemma | null>(null);
   const [activeSelectedOption, setActiveSelectedOption] = useState<DilemmaOption | null>(null);
-  const [recentEffects, setRecentEffects] = useState<IndicatorEffects | null>(null);
 
   // Modals state
   const [isInstructionsOpen, setIsInstructionsOpen] = useState(false);
@@ -58,8 +59,11 @@ export default function App() {
 
   // Helper to clamp values between 0 and 100
   const clampIndicator = (val: number): number => {
-    return Math.min(Math.max(val, 0), 100);
+    return Math.min(Math.max(val, 10), 100);
   };
+
+  // 4 Visible Indicators computed dynamically
+  const visibleStats = calculateVisibleStats(indicators, habitsHistory);
 
   // Start experience flow
   const handleStartExperience = () => {
@@ -89,9 +93,8 @@ export default function App() {
     if (!activeDilemma) return;
 
     setActiveSelectedOption(option);
-    setRecentEffects(option.effects);
 
-    // Calculate new indicators
+    // Calculate new indicators (moderated updates)
     const newIndicators: Indicators = {
       libertad: clampIndicator(indicators.libertad + (option.effects.libertad ?? 0)),
       integridad: clampIndicator(indicators.integridad + (option.effects.integridad ?? 0)),
@@ -100,7 +103,10 @@ export default function App() {
       relaciones: clampIndicator(indicators.relaciones + (option.effects.relaciones ?? 0))
     };
 
+    const newHabits = [...habitsHistory, option.habitType];
+
     setIndicators(newIndicators);
+    setHabitsHistory(newHabits);
     setScreen('consequence');
   };
 
@@ -113,21 +119,29 @@ export default function App() {
   const handleSaveNoteAndAdvance = (studentReflection: string) => {
     if (!activeDilemma || !activeSelectedOption) return;
 
-    // Record decision
+    const currentVisible = calculateVisibleStats(indicators, habitsHistory);
+
+    // Record decision with full 5-block detail
     const record: DecisionRecord = {
       step: activeDilemma.step,
       theme: activeDilemma.theme,
       title: activeDilemma.title,
       bookConnection: activeDilemma.bookConnection,
       selectedOptionId: activeSelectedOption.id,
+      selectedOptionLabel: activeSelectedOption.label,
       selectedOptionText: activeSelectedOption.text,
       selectedStance: activeSelectedOption.philosophicalStance,
       effects: activeSelectedOption.effects,
+      habitType: activeSelectedOption.habitType,
+      coreIVTheme: activeSelectedOption.coreIVTheme,
       consequence: activeSelectedOption.consequence,
+      bookConnectionDetail: activeSelectedOption.bookConnectionDetail,
+      coreIVConnectionDetail: activeSelectedOption.coreIVConnectionDetail,
       explanation: activeSelectedOption.explanation,
       reflectionQuestion: activeSelectedOption.reflection,
       studentReflection: studentReflection.trim() || undefined,
-      indicatorsAfter: { ...indicators }
+      indicatorsAfter: { ...indicators },
+      visibleStatsAfter: { ...currentVisible }
     };
 
     const updatedHistory = [...history.filter(h => h.step !== activeDilemma.step), record];
@@ -162,20 +176,20 @@ export default function App() {
   const executeReset = () => {
     setIsRestartConfirmOpen(false);
     setIndicators(DEFAULT_INDICATORS);
+    setHabitsHistory([]);
     setCompletedSteps([]);
     setHistory([]);
     setCurrentStep(1);
     setActiveDilemma(null);
     setActiveSelectedOption(null);
-    setRecentEffects(null);
     setScreen('welcome');
   };
 
   const currentDilemma = activeDilemma || DILEMMAS.find((d) => d.step === currentStep) || DILEMMAS[0];
-  const finalProfile = calculateFinalProfile(indicators);
+  const finalProfile = calculateFinalProfile(indicators, visibleStats, habitsHistory);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF7F2] text-[#1E293B]">
+    <div className="min-h-screen flex flex-col bg-[var(--color-bg-app)] text-[var(--color-text-primary)] transition-colors">
       {/* Top Navigation */}
       <Navbar
         currentScreen={screen}
@@ -223,8 +237,8 @@ export default function App() {
           <StaircaseBoard
             currentStep={currentStep}
             completedSteps={completedSteps}
-            indicators={indicators}
-            recentEffects={recentEffects}
+            visibleStats={visibleStats}
+            history={history}
             onEnterStep={handleEnterStep}
             onFinishJourney={() => setScreen('final_result')}
           />
@@ -242,7 +256,7 @@ export default function App() {
           <ConsequenceCard
             dilemma={currentDilemma}
             selectedOption={activeSelectedOption}
-            indicators={indicators}
+            visibleStats={visibleStats}
             onProceedToReflection={handleProceedToReflection}
           />
         )}
@@ -253,6 +267,7 @@ export default function App() {
             selectedOption={activeSelectedOption}
             currentStep={currentStep}
             totalSteps={10}
+            habitsHistory={habitsHistory}
             onSaveNoteAndAdvance={handleSaveNoteAndAdvance}
           />
         )}
@@ -260,7 +275,7 @@ export default function App() {
         {screen === 'final_result' && (
           <FinalResult
             profile={finalProfile}
-            indicators={indicators}
+            visibleStats={visibleStats}
             history={history}
             initialProfile={initialProfile}
             onReviewJourney={() => setScreen('journey_review')}
@@ -271,6 +286,7 @@ export default function App() {
         {screen === 'journey_review' && (
           <JourneyReview
             history={history}
+            visibleStats={visibleStats}
             onBackToResult={() => setScreen('final_result')}
             onRestart={handleRequestRestart}
           />
@@ -295,10 +311,10 @@ export default function App() {
       />
 
       {/* Quiet Academic Footer */}
-      <footer className="border-t border-stone-200/80 py-6 text-center text-xs text-stone-500 bg-[#FAF7F2]">
+      <footer className="border-t border-[var(--color-border)] py-6 text-center text-xs text-[var(--color-text-muted)] bg-[var(--color-bg-app)] transition-colors">
         <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <span>
-            Core IV: Persona y su actuar · Core Curriculum Universitario
+            Core IV: Persona y su actuar · Experiencia individual de rol
           </span>
           <span className="italic">
             Inspirado en Harper Lee y Fiódor Dostoievski

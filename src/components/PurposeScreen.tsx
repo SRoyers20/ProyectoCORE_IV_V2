@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, ArrowRight, BookOpen, CheckCircle, Compass, Scale, Shield, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight, BookOpen, CheckCircle, Compass, Scale, Repeat, Sparkles, User } from 'lucide-react';
 import scalesImage from '../assets/images/literary_dialogue_scales_1791412465563.jpg';
 
 interface PurposeScreenProps {
@@ -8,37 +8,33 @@ interface PurposeScreenProps {
 }
 
 export const PurposeScreen: React.FC<PurposeScreenProps> = ({ onBack, onProceed }) => {
-  const concepts = [
-    'Libertad', 'Circunstancias', 'Responsabilidad', 'Justicia',
-    'Conciencia', 'Autenticidad', 'Integridad práctica', 'Presión social',
-    'Verdad', 'Relaciones humanas', 'Proyecto de vida', 'Realización personal'
+  const coreFourThemes = [
+    {
+      title: '1. Toma de decisiones / Libertad',
+      icon: Compass,
+      description: 'La libertad no es actuar sin límites, sino la capacidad personal de discernir y comprometer la propia voluntad con aquello que es bueno y justo, asumiendo con madurez las consecuencias.'
+    },
+    {
+      title: '2. Hábitos que construyen',
+      icon: Repeat,
+      description: 'Las decisiones pequeñas y repetidas no son neutras: van configurando una trayectoria. Lo que haces una vez parece irrelevante, pero lo que repites termina definiendo el camino que recorres.'
+    },
+    {
+      title: '3. Autenticidad',
+      icon: Sparkles,
+      description: 'Actuar de manera coherente con los propios principios éticos y con el bien, resistiendo tanto la tentación de la conveniencia rápida como el miedo a la desaprobación social.'
+    },
+    {
+      title: '4. Vida lograda',
+      icon: Scale,
+      description: 'La realización personal no equivale únicamente al éxito, al reconocimiento o al beneficio individual. Se alcanza integrando el propio bienestar con la dignidad y el servicio a los demás.'
+    }
   ];
 
-  const corePremises = [
-    {
-      title: 'Circunstancias vs. Determinismo',
-      description: 'Las circunstancias influyen poderosamente en las decisiones, pero jamás determinan de forma absoluta a la persona: siempre subsiste un margen de respuesta libre.'
-    },
-    {
-      title: 'Libertad con límites y consecuencias',
-      description: 'Ser libre no significa actuar sin restricciones ni responsabilidades; la auténtica libertad asume el costo real de sus elecciones.'
-    },
-    {
-      title: 'Autenticidad orientada al bien',
-      description: 'La autenticidad no consiste en seguir cualquier impulso caprichoso, sino en actuar de manera coherente con los propios principios y el bien común.'
-    },
-    {
-      title: 'Límites de la racionalización',
-      description: 'Una inteligencia brillante, una excusa elaborada o una causa colectiva no convierten automáticamente una acción injusta en algo éticamente correcto.'
-    },
-    {
-      title: 'Realización personal no es mero éxito',
-      description: 'La vida lograda no equivale a la acumulación de estatus, popularidad o ventajas privadas a costa del prójimo.'
-    },
-    {
-      title: 'Impacto comunitario ineludible',
-      description: 'Ninguna decisión se agota en la esfera privada del individuo: cada acto tiene un eco visible en las personas y la comunidad.'
-    }
+  const concepts = [
+    'Libertad responsable', 'Circunstancias', 'Hábitos', 'Justicia',
+    'Conciencia', 'Autenticidad', 'Consistencia', 'Presión social',
+    'Verdad', 'Relaciones humanas', 'Proyecto de vida', 'Vida lograda'
   ];
 
   return (
@@ -47,7 +43,7 @@ export const PurposeScreen: React.FC<PurposeScreenProps> = ({ onBack, onProceed 
       <div>
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-2 text-xs font-medium text-stone-600 hover:text-stone-900 transition-colors cursor-pointer"
+          className="inline-flex items-center gap-2 text-xs font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Volver al inicio</span>
@@ -55,35 +51,35 @@ export const PurposeScreen: React.FC<PurposeScreenProps> = ({ onBack, onProceed 
       </div>
 
       {/* Main Title & Subtitle */}
-      <div className="space-y-3 border-b border-stone-200 pb-6">
-        <div className="text-xs uppercase tracking-widest text-amber-800 font-semibold">
+      <div className="space-y-3 border-b border-[var(--color-border)] pb-6">
+        <div className="text-xs uppercase tracking-widest text-[var(--color-accent)] font-semibold">
           Fundamento Académico · Core Curriculum
         </div>
-        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-stone-900">
+        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[var(--color-text-primary)]">
           Propósito Formativo de Core IV
         </h1>
-        <p className="text-lg font-serif italic text-stone-700">
+        <p className="text-lg font-serif italic text-[var(--color-text-secondary)]">
           «La toma libre de decisiones para la realización personal»
         </p>
       </div>
 
       {/* Dual Column: Core premise & visual */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-        <div className="md:col-span-7 space-y-4 text-sm text-stone-700 leading-relaxed">
+        <div className="md:col-span-7 space-y-4 text-sm text-[var(--color-text-secondary)] leading-relaxed">
           <p>
-            Al culminar el ciclo de formación del <strong className="text-stone-900">Core Curriculum</strong>, esta experiencia sitúa al estudiante ante el núcleo de la asignatura <span className="font-semibold text-stone-900">Persona y su actuar</span>: el discernimiento práctico.
+            Al culminar el ciclo de formación del <strong className="text-[var(--color-text-primary)]">Core Curriculum</strong>, esta experiencia sitúa al estudiante ante el núcleo de la asignatura <span className="font-semibold text-[var(--color-text-primary)]">Persona y su actuar</span>: el discernimiento práctico individual.
           </p>
           <p>
-            Lejos de funcionar como un test convencional con opciones obvias, cada dilema reproduce las tensiones vivas que atraviesan la vida universitaria y profesional. Aquí no se califica una memoria dogmática, sino la madurez para navegar contradicciones, asumir renuncias y comprender que todo proyecto de vida auténtico se apoya en la fidelidad a la verdad.
+            No se trata de un test con respuestas superficialmente correctas o incorrectas. Cada peldaño expone las tensiones reales entre valores que atraviesan la vida personal y profesional, invitándote a descubrir los hábitos que estás construyendo y el horizonte hacia una vida lograda.
           </p>
-          <div className="p-4 bg-amber-50/60 border border-amber-200/80 rounded-xl text-xs text-stone-800 space-y-1">
-            <span className="font-bold text-amber-900 block">Horizonte pedagógico:</span>
+          <div className="p-4 bg-[var(--color-accent-subtle)] border border-[var(--color-accent-border)] rounded-xl text-xs text-[var(--color-text-primary)] space-y-1">
+            <span className="font-bold text-[var(--color-accent)] block">Horizonte pedagógico:</span>
             Aprender a reflexionar antes de justificar, asumir antes de culpar y comprometerse antes de someterse.
           </div>
         </div>
 
         <div className="md:col-span-5">
-          <div className="rounded-2xl overflow-hidden border border-stone-300 shadow-sm bg-stone-100 aspect-4/3">
+          <div className="rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-sm bg-[var(--color-surface-subtle)] aspect-4/3">
             <img
               src={scalesImage}
               alt="Balanza de la justicia y libro sobre escritorio sobrio de madera"
@@ -94,16 +90,44 @@ export const PurposeScreen: React.FC<PurposeScreenProps> = ({ onBack, onProceed 
         </div>
       </div>
 
-      {/* Explicit Core Concepts Section */}
+      {/* Los Cuatro Temas Centrales de Core IV */}
       <div className="space-y-4">
-        <h2 className="text-xl font-serif font-bold text-stone-900">
+        <h2 className="text-xl font-serif font-bold text-[var(--color-text-primary)] flex items-center gap-2">
+          <span>Los cuatro temas centrales de la clase</span>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {coreFourThemes.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={idx}
+                className="p-4 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl space-y-1.5 transition-colors"
+              >
+                <div className="flex items-center gap-2">
+                  <Icon className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
+                  <h3 className="font-serif font-bold text-[var(--color-text-primary)] text-sm">
+                    {item.title}
+                  </h3>
+                </div>
+                <p className="text-xs text-[var(--color-text-muted)] leading-relaxed pl-6">
+                  {item.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Explicit Core Concepts Section */}
+      <div className="space-y-3">
+        <h2 className="text-lg font-serif font-bold text-[var(--color-text-primary)]">
           Conceptos éticos estructurantes
         </h2>
         <div className="flex flex-wrap gap-2 text-xs">
           {concepts.map((concept) => (
             <span
               key={concept}
-              className="px-3 py-1.5 bg-white border border-stone-200/90 rounded-lg text-stone-700 font-medium"
+              className="px-3 py-1.5 bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg text-[var(--color-text-secondary)] font-medium"
             >
               {concept}
             </span>
@@ -111,43 +135,18 @@ export const PurposeScreen: React.FC<PurposeScreenProps> = ({ onBack, onProceed 
         </div>
       </div>
 
-      {/* 6 Essential Understandings */}
-      <div className="space-y-4">
-        <h2 className="text-xl font-serif font-bold text-stone-900">
-          Seis claves de discernimiento
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {corePremises.map((item, idx) => (
-            <div
-              key={idx}
-              className="p-4 bg-white/80 border border-stone-200 rounded-xl space-y-1.5"
-            >
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-amber-700 shrink-0" />
-                <h3 className="font-serif font-bold text-stone-900 text-sm">
-                  {item.title}
-                </h3>
-              </div>
-              <p className="text-xs text-stone-600 leading-relaxed pl-6">
-                {item.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Bottom CTA */}
-      <div className="pt-4 flex items-center justify-between border-t border-stone-200">
+      <div className="pt-4 flex items-center justify-between border-t border-[var(--color-border)]">
         <button
           onClick={onBack}
-          className="text-xs text-stone-500 hover:text-stone-900 transition-colors cursor-pointer"
+          className="text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] transition-colors cursor-pointer"
         >
           Regresar al inicio
         </button>
 
         <button
           onClick={onProceed}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-stone-900 text-stone-50 text-sm font-medium rounded-xl hover:bg-stone-800 transition-colors shadow-sm cursor-pointer"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-primary-btn)] text-[var(--color-primary-btn-text)] text-sm font-semibold rounded-xl hover:opacity-90 transition-opacity shadow-sm cursor-pointer"
         >
           <span>Elegir punto de partida</span>
           <ArrowRight className="w-4 h-4" />
