@@ -28,6 +28,9 @@ import { FinalResult } from './components/FinalResult';
 import { JourneyReview } from './components/JourneyReview';
 import { InstructionsModal } from './components/InstructionsModal';
 import { ConfirmModal } from './components/ConfirmModal';
+import { PersistentAudioPlayer } from './components/PersistentAudioPlayer';
+import { assignJourneySong } from './data/journeySongs';
+import { useAudio } from './context/AudioContext';
 
 const DEFAULT_INDICATORS: Indicators = {
   libertad: 50,
@@ -38,6 +41,7 @@ const DEFAULT_INDICATORS: Indicators = {
 };
 
 export default function App() {
+  const { stop } = useAudio();
   const [screen, setScreen] = useState<AppScreen>('welcome');
   const [initialProfile, setInitialProfile] = useState<InitialProfile | null>(null);
   const [indicators, setIndicators] = useState<Indicators>(DEFAULT_INDICATORS);
@@ -174,6 +178,7 @@ export default function App() {
   };
 
   const executeReset = () => {
+    stop();
     setIsRestartConfirmOpen(false);
     setIndicators(DEFAULT_INDICATORS);
     setHabitsHistory([]);
@@ -187,6 +192,7 @@ export default function App() {
 
   const currentDilemma = activeDilemma || DILEMMAS.find((d) => d.step === currentStep) || DILEMMAS[0];
   const finalProfile = calculateFinalProfile(indicators, visibleStats, habitsHistory);
+  const assignedSong = assignJourneySong(history, visibleStats, habitsHistory);
 
   return (
     <div className="min-h-screen flex flex-col bg-[var(--color-bg-app)] text-[var(--color-text-primary)] transition-colors">
@@ -253,11 +259,14 @@ export default function App() {
         )}
 
         {screen === 'consequence' && activeSelectedOption && (
-          <ConsequenceCard
-            dilemma={currentDilemma}
-            selectedOption={activeSelectedOption}
-            onProceedToReflection={handleProceedToReflection}
-          />
+          <>
+            <ConsequenceCard
+              dilemma={currentDilemma}
+              selectedOption={activeSelectedOption}
+              onProceedToReflection={handleProceedToReflection}
+            />
+            <PersistentAudioPlayer song={assignedSong} titlePrefix="Banda Sonora · Retroalimentación" />
+          </>
         )}
 
         {screen === 'reflection' && activeSelectedOption && (
@@ -276,6 +285,7 @@ export default function App() {
             profile={finalProfile}
             visibleStats={visibleStats}
             history={history}
+            habitsHistory={habitsHistory}
             initialProfile={initialProfile}
             onReviewJourney={() => setScreen('journey_review')}
             onRestart={handleRequestRestart}

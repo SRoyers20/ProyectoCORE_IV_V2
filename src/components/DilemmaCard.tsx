@@ -66,8 +66,17 @@ export const DilemmaCard: React.FC<DilemmaCardProps> = ({
             {dilemma.title}
           </h1>
 
-          <div className="text-xs text-[var(--color-text-muted)] italic">
-            {dilemma.literaryContext}
+          {/* Enhanced Literary Context Box */}
+          <div className="p-3.5 bg-[#FAF4EB] dark:bg-[#1E2738] border-2 border-[var(--color-accent-border)] rounded-xl flex items-start gap-2.5 transition-colors">
+            <BookOpen className="w-4 h-4 text-[var(--color-accent)] shrink-0 mt-0.5" />
+            <div className="space-y-0.5">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--color-accent)] block">
+                Trasfondo Literario: {dilemma.bookConnection.replace('Inspirado en el conflicto de ', '').replace('Inspirado en el conflicto interior de ', '')}
+              </span>
+              <p className="text-xs sm:text-sm text-[var(--color-text-primary)] font-serif leading-relaxed">
+                {dilemma.literaryContext}
+              </p>
+            </div>
           </div>
         </div>
 

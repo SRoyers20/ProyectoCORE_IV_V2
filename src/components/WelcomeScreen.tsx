@@ -90,31 +90,68 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({
       </div>
 
       {/* Literary Foundation Callout with Brief Context */}
-      <div className="border-t border-b border-[var(--color-border)] py-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase text-[var(--color-accent)]">
-            <Scale className="w-4 h-4 text-[var(--color-accent)]" />
-            <span>Matar a un ruiseñor · Harper Lee</span>
-          </div>
-          <h2 className="text-xl font-serif font-bold text-[var(--color-text-primary)]">
-            Atticus Finch y el coraje de la integridad
+      {/* Literary Foundation Callout with Enhanced Context */}
+      <div className="border-t border-b border-[var(--color-border)] py-8 space-y-4">
+        <div className="text-left space-y-1">
+          <span className="text-xs uppercase font-bold tracking-widest text-[var(--color-accent)] block">
+            Diálogo con la Gran Literatura
+          </span>
+          <h2 className="text-xl sm:text-2xl font-serif font-bold text-[var(--color-text-primary)]">
+            Dos Obras Fundamentales sobre la Conciencia y la Justicia
           </h2>
-          <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
-            Atticus Finch decide defender a Tom Robinson, un hombre negro acusado falsamente en una sociedad dominada por el prejuicio y la segregación. A través de los ojos de su hija Scout, la obra explora la tensión entre la opinión de la mayoría y la voz de la conciencia: <span className="italic">«¿Qué nos obliga a actuar con rectitud aunque sepamos que podemos perder?»</span>
+          <p className="text-xs sm:text-sm text-[var(--color-text-muted)] max-w-2xl">
+            Los diez peldaños de esta experiencia están inspirados en las tensiones éticas de dos clásicos imperecederos. Conoce el contexto que iluminará tus decisiones:
           </p>
         </div>
 
-        <div className="space-y-3">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase text-[var(--color-accent)]">
-            <BookOpen className="w-4 h-4 text-[var(--color-accent)]" />
-            <span>Crimen y castigo · Fiódor Dostoievski</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+          {/* Card 1: To Kill a Mockingbird */}
+          <div className="p-6 bg-[#FAF4EB] dark:bg-[#1A2230] border-2 border-[var(--color-accent-border)] rounded-2xl space-y-3.5 shadow-xs text-left transition-colors">
+            <div className="flex items-center justify-between gap-2 border-b border-[var(--color-border-subtle)] pb-2.5">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--color-accent)]">
+                <Scale className="w-4 h-4 text-[var(--color-accent)]" />
+                <span>Matar a un ruiseñor</span>
+              </div>
+              <span className="text-[11px] text-[var(--color-text-muted)] font-serif italic">Harper Lee (1960)</span>
+            </div>
+            
+            <h3 className="text-lg font-serif font-bold text-[var(--color-text-primary)] leading-snug">
+              Atticus Finch y el coraje de la integridad frente a la masa
+            </h3>
+
+            <div className="p-3 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] text-xs text-[var(--color-text-secondary)] space-y-1.5 leading-relaxed">
+              <p>
+                <strong className="text-[var(--color-text-primary)]">Trama y conflicto:</strong> En el sur racista de Alabama (década de 1930), el abogado Atticus Finch asume la defensa penal de Tom Robinson, un jornalero negro acusado falsamente de violación. El pueblo de Maycomb exige una condena rápida sin juicio justo.
+              </p>
+              <p>
+                <strong className="text-[var(--color-text-primary)]">Lección para Core IV:</strong> A través de los ojos de Scout, la novela demuestra que la conciencia personal no puede negociarse ante la presión de la mayoría: <span className="italic">«Antes de poder vivir con los demás, tengo que poder vivir conmigo mismo»</span>.
+              </p>
+            </div>
           </div>
-          <h2 className="text-xl font-serif font-bold text-[var(--color-text-primary)]">
-            Raskólnikov y los límites de la razón
-          </h2>
-          <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
-            Rodión Raskólnikov intenta justificar una acción grave mediante una teoría intelectual que divide a la humanidad entre seres ordinarios y extraordinarios. Tras su acto, descubre el peso ineludible de la conciencia y la necesidad de asumir la responsabilidad para iniciar su redención humana.
-          </p>
+
+          {/* Card 2: Crime and Punishment */}
+          <div className="p-6 bg-[#FAF4EB] dark:bg-[#1A2230] border-2 border-[var(--color-accent-border)] rounded-2xl space-y-3.5 shadow-xs text-left transition-colors">
+            <div className="flex items-center justify-between gap-2 border-b border-[var(--color-border-subtle)] pb-2.5">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--color-accent)]">
+                <BookOpen className="w-4 h-4 text-[var(--color-accent)]" />
+                <span>Crimen y castigo</span>
+              </div>
+              <span className="text-[11px] text-[var(--color-text-muted)] font-serif italic">Fiódor Dostoievski (1866)</span>
+            </div>
+
+            <h3 className="text-lg font-serif font-bold text-[var(--color-text-primary)] leading-snug">
+              Raskólnikov y los peligros de la racionalización moral
+            </h3>
+
+            <div className="p-3 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] text-xs text-[var(--color-text-secondary)] space-y-1.5 leading-relaxed">
+              <p>
+                <strong className="text-[var(--color-text-primary)]">Trama y conflicto:</strong> Rodión Raskólnikov, un brillante estudiante de Derecho asfixiado por la miseria de San Petersburgo, formula una teoría según la cual los «hombres extraordinarios» tienen derecho moral a transgredir la ley si con ello logran un fin útil.
+              </p>
+              <p>
+                <strong className="text-[var(--color-text-primary)]">Lección para Core IV:</strong> Tras cometer el crimen, descubre que la razón no puede acallar la voz de la conciencia humana. La verdadera libertad no radica en la soberbia de saltarse los límites, sino en la redención a través de la verdad y el amor solidario.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
