@@ -1,0 +1,6 @@
+{
+  "name": "Decide tu Camino - Core IV",
+  "description": "Una experiencia educativa sobre libertad, conciencia y realización personal para el Core Curriculum, inspirada en Harper Lee y Fiódor Dostoievski.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
